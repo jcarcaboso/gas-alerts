@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  gas_alert:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - TELEGRAM_BOT_TOKEN=YOUR_TELEGRAM_BOT_TOKEN
+      - CHAT_ID=YOUR_CHAT_ID
+      - INFURA_API_KEY=YOUR_INFURA_API_KEY
+      - PERSISTED_DATA_PATH=/data/thresholds.json
+    volumes:
+      - /tracker/data:/data
+    restart: unless-stopped
